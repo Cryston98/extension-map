@@ -36,7 +36,7 @@ public class mainClient {
 				System.out.println("usage: <program>");
 				return;
 			}
-			String outputFile=arguments.get(1)+"-output.json";
+			String outputFile=arguments.get(2)+"-output.json";
 			String path=arguments.get(0);
 			
 			
@@ -111,8 +111,7 @@ public class mainClient {
 				file.write(objF.toString());
 				file.flush();
 				System.out.println("Extracted "+pathAllFile.size()+" files from project "+arguments.get(1));
-			
-
+		
 			   }catch(IOException e) {
 				   e.printStackTrace();
 			   }
