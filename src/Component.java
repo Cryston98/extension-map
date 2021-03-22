@@ -25,6 +25,9 @@ public class Component {
 	public String getName() {
 		return name;
 	}
+	public String getFile(int id) {
+		return pathFile.get(id).toString();
+	}
 	
 	public int getSize() {
 		return size;

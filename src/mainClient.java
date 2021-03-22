@@ -3,10 +3,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -19,27 +22,30 @@ public class mainClient {
 	   static int count = 0;
 	   static int progress=0;	
 	   static int countComp=0;
-	
+	   private static DecimalFormat df2 = new DecimalFormat("#.##");
+	   static ArrayList<String> arguments;
+	   
 	public static void main(String[] args) throws JSONException {
 		
-		ArrayList<String> arguments = readPropertiesFile();
+		arguments = readPropertiesFile();
 		if(arguments == null)
 		{return;}
 		else
 		{
 			if(args.length!=0) {
-				System.out.print("usage: <program>");
+				System.out.println("usage: <program>");
 				return;
 			}
 			String outputFile=arguments.get(1)+"-output.json";
 			String path=arguments.get(0);
+			
 			
 			getFile(path);
 			ArrayList<Path> pathAllFile =new ArrayList<Path>();
 			ArrayList<Component> extComp =new ArrayList<Component>();
 			 
 		
-			  
+			System.out.println("System analysis started...");
 			try {
 				
 				Files.walk(new File(path).toPath())
@@ -70,6 +76,8 @@ public class mainClient {
 					   }
 				  }
 			}
+				System.out.println("+ Get components of the system by extension - COMPLETED !");
+			
 			 
 			for(int w=0;w<pathAllFile.size();w++) 
 			  {
@@ -82,22 +90,29 @@ public class mainClient {
 					   }   
 				   }
 			   }
+				System.out.println("+ Construct all components  - COMPLETED !");
 			    
 			   JSONArray objF = new JSONArray();
 			   for(int h=0;h<extComp.size();h++) {
-				   JSONObject obj = new JSONObject();
-				   obj.put("name", extComp.get(h).getName());
-				   obj.put("files", extComp.get(h).getFiles());
-				   obj.put("category", "Extension");
-				   obj.put("value", extComp.get(h).getSize());
-				   objF.put(obj); 
-			   }
+					   for(int p=0;p<extComp.get(h).getSize();p++) 
+					   {
+						   JSONObject obj = new JSONObject();
+						   obj.put("name",extComp.get(h).getName());
+						   obj.put("file",getCorectFormat(extComp.get(h).getFile(p)));
+						   obj.put("category","Extension Map");
+						   obj.put("value",getFileSizeInBytes(extComp.get(h).getFile(p)));
+						   objF.put(obj); 
+					   }
+					   System.out.println("+ Write result for component <."+extComp.get(h).getName()+"> - COMPLETED !");
+				   }
 			   
 			   try(FileWriter file = new FileWriter(outputFile))
 			   {
 				file.write(objF.toString());
 				file.flush();
 				System.out.println("Extracted "+pathAllFile.size()+" files from project "+arguments.get(1));
+			
+
 			   }catch(IOException e) {
 				   e.printStackTrace();
 			   }
@@ -106,7 +121,6 @@ public class mainClient {
 		}
 		   
 	}
-	
   private static void getFile(String dirPath){
 	        File f = new File(dirPath);
 	        File[] files = f.listFiles();
@@ -121,7 +135,7 @@ public class mainClient {
 	        }
 	    }
 	   
-  public static String getExtension(String fileName) {
+ public static String getExtension(String fileName) {
 		    char ch;
 		    int len;
 		    if(fileName==null || 
@@ -163,5 +177,30 @@ public class mainClient {
 	}
 	
   }
-	
+  public static long getFileSizeInBytes(String fileName) {
+	  long sizeFile=0;
+	  String aux_path=fileName.replace("\\", "/");
+	  File file = new File(aux_path);
+      if (file.exists()) {
+          // size of a file (in bytes)
+          sizeFile= file.length();
+      }
+      return sizeFile;
+  }
+  private static String getCorectFormat(String filePath)
+  {
+	  String path="";
+	  String os_type=arguments.get(1);
+	 if(os_type.equals("windows"))
+	 {
+		String p=arguments.get(0)+"\\";
+	  	String aux_path = filePath.replace(p,"");
+	  	path=aux_path.replace("\\", "/");  
+	  	//System.out.println("\nPath: "+path);
+	  	return path;
+	 }else {
+		  System.out.println("\n Linux OS");
+		  return filePath;
+	  }
+  }
 }
