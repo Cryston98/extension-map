@@ -2,9 +2,10 @@
 
 ![license](https://img.shields.io/github/license/Cryston98/extension_counter)
 ![issues](https://img.shields.io/github/issues/Cryston98/extension_counter)
-![build](https://img.shields.io/appveyor/build/Cryston98/extension_counter)
 
 This plugin categorizes software files by extension, to illustrate the contents of a software project
+
+For the sake of this demonstration, we have analyzed [OBS Studio](https://obsproject.com/)
 
 The files generated can be integrated in Dx Platform
 
