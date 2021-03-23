@@ -4,10 +4,49 @@
 ![issues](https://img.shields.io/github/issues/Cryston98/extension_counter)
 ![build](https://img.shields.io/appveyor/build/Cryston98/extension_counter)
 
-This plugin counts the extensions of the files used in a software project
+This plugin categorizes software files by extension, to illustrate the contents of a software project
+
+The files generated can be integrated in Dx Platform
 
 ## Installation
 
+* Start by downloading a release version from this repository. Click on [Releases](https://github.com/Cryston98/extension_counter/releases "Go to Releases") and download the .rar file
+* Extract the contents of the .rar file in the desired location
+
 ## Usage
+
+* After all the files have been extracted, the folder should look like so:
+
+![image](https://user-images.githubusercontent.com/33568801/112189544-c8207a80-8c0c-11eb-9275-b01644009864.png)
+
+
+
+* Modify the project path, project name and os_type entries from *config.properties* file. For example:
+```bash
+  projectName=obs-studio
+  projectPath=C:\\Users\\Roland\\CES_obs
+  os_type=windows
+```
+
+* **IMPORTANT** 
+
+   * **DO NOT** add spaces before or after the config file entries
+   * Specify the **absolute** project path(starting from the root folder)
+   * os_type can be **windows** or **linux** (in lowercase)
+
+* Open a command prompt(or Powershell window) and type in either of the following commands:
+```bash
+  run.bat
+  run.sh
+```
+
+* or double click either one of the files..
+* If everything was configured correctly, a file named **"projectName-output.json"** file should be generated, and the command prompt window should like this:
+
+![image](https://user-images.githubusercontent.com/33568801/112191042-43cef700-8c0e-11eb-916a-c1c737beabe5.png)
+
+
+![image](https://user-images.githubusercontent.com/33568801/112190671-e8046e00-8c0d-11eb-908f-ff415c2f8d01.png)
+
 
 ## The team
