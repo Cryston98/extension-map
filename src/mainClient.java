@@ -110,7 +110,7 @@ public class mainClient {
 			   {
 				file.write(objF.toString());
 				file.flush();
-				System.out.println("Extracted "+pathAllFile.size()+" files from project "+arguments.get(1));
+				System.out.println("Extracted "+pathAllFile.size()+" files from project "+arguments.get(2));
 		
 			   }catch(IOException e) {
 				   e.printStackTrace();
@@ -195,11 +195,14 @@ public class mainClient {
 		String p=arguments.get(0)+"\\";
 	  	String aux_path = filePath.replace(p,"");
 	  	path=aux_path.replace("\\", "/");  
-	  	//System.out.println("\nPath: "+path);
 	  	return path;
 	 }else {
-		  System.out.println("\n Linux OS");
-		  return filePath;
+		 	//String p = arguments.get(0).substring(0,8).trim();// jast define start point so output is "123"
+			String p=arguments.get(0)+"/";
+			String aux_path = filePath.replace(p,"");
+		  	path=aux_path.replace("\\", "/");  
+		  	//System.out.println("\nPath: "+path);
+		  	return path;
 	  }
   }
 }
