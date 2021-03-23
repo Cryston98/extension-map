@@ -12,6 +12,17 @@ The files generated can be integrated in Dx Platform
 
 * Start by downloading a release version from this repository. Click on [Releases](https://github.com/Cryston98/extension_counter/releases "Go to Releases") and download the .rar file
 * Extract the contents of the .rar file in the desired location
+ ### [Optional] Running this program as a Docker image
+  * For this step, you must have Docker installed. You can download it from [here](https://www.docker.com/)
+  * After Docker installation, open the command prompt and run the following command:
+    ```bash
+      docker run cryston/extension-map:1.0
+    ```
+    
+  * Create an empty **.json** file with the project name from config(e.g. **obs-studio-output.json**)
+  * Modify the projectPath from config file by adding **/sources**
+  * To run the command, we have to create 3 volumes: one for the output file, one for the config.properties file located
+  in Docker and the local config file, and one for the sources folder and the path to our project.
 
 ## Usage
 
@@ -50,3 +61,14 @@ The files generated can be integrated in Dx Platform
 
 
 ## The team
+
+ * Deaconu Adrian-Sebastian
+ * Tamas Roland
+
+## Contributions
+
+ If you would like to contribute to this project, you can fork the repository and modify the files,
+ or you can clone the repository.
+ 
+## Credits
+ We would like to thank Java for making the development of this plugin possible.
