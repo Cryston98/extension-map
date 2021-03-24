@@ -47,13 +47,14 @@ The files generated can be integrated in Dx Platform
    * os_type can be **windows** or **linux** (in lowercase)
 
 * Open a command prompt(or Powershell window) and type in either of the following commands:
+   * or double click either one of the files..
+  
 ```bash
   run.bat
   run.sh
 ```
 
-* or double click either one of the files..
-* If everything was configured correctly, a file named **"projectName-output.json"** file should be generated, and the command prompt window should like this:
+* If everything was configured correctly, the program should start, a file named **"projectName-output.json"** file should be generated, and the command prompt window should like this:
 
 ![image](https://user-images.githubusercontent.com/33568801/112191042-43cef700-8c0e-11eb-916a-c1c737beabe5.png)
 
