@@ -15,15 +15,22 @@ The files generated can be integrated in Dx Platform
 * Extract the contents of the .rar file in the desired location
  ### [Optional] Running this program as a Docker image
   * For this step, you must have Docker installed. You can download it from [here](https://www.docker.com/)
-  * After Docker installation, open the command prompt and run the following command:
+  * After Docker installation, you need to create a file with the name **config.properties** with the follow content :
     ```bash
-      docker run cryston/extension-map:1.0
+    projectName=OBS_P
+    projectPath=/sources
+    os_type=windows
     ```
-    
-  * Create an empty **.json** file with the project name from config(e.g. **obs-studio-output.json**)
-  * Modify the projectPath from config file by adding **/sources**
-  * To run the command, we have to create 3 volumes: one for the output file, one for the config.properties file located
-  in Docker and the local config file, and one for the sources folder and the path to our project.
+  * Next step is to create an empty **.json** file with the project name from config and **-output.json** (e.g. **OBS_P-output.json**)
+  * To run the command, we have to create 3 volumes in docker: 
+    * one for the output file, 
+    * one for the config.properties, 
+    * and one for the path to our project.
+   
+   * Windows Command :
+    ```bash
+  docker run -v %cd%/config.properties:/extension-map/config.properties -v %cd%/OBS_P-output.json:/extension-map/OBS_P-output.json -v C:/Users/Ade_3/.dx-platform/projects/OBSP/repository/obs-studio:/sources cryston/extension-map:1.0
+    ```
 
 ## Usage
 
