@@ -37,7 +37,8 @@ The files generated can be integrated in Dx Platform
    ```bash
   docker run -v $PWD/config.properties:/extension-map/config.properties -v $PWD/OBS_P-output.json:/extension-map/OBS_P-output.json -v C:/Users/Ade_3/.dx-platform/projects/OBSP/repository/obs-studio:/sources cryston/extension-map:1.0
    ```
-   
+  [Docker Image](https://hub.docker.com/repository/docker/cryston/extension-map)
+
  
 ## Usage
 
