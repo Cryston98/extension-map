@@ -13,6 +13,9 @@ The files generated can be integrated in Dx Platform
 
 * Start by downloading a release version from this repository. Click on [Releases](https://github.com/Cryston98/extension_counter/releases "Go to Releases") and download the .rar file
 * Extract the contents of the .rar file in the desired location
+
+***
+
  ### [Optional] Running this program as a Docker image
   * STEP 1: you must have Docker installed. You can download it from [here](https://www.docker.com/)
   * STEP 2: you need to create a file with the name **config.properties** with the follow content :
@@ -37,8 +40,9 @@ The files generated can be integrated in Dx Platform
    ```bash
   docker run -v $PWD/config.properties:/extension-map/config.properties -v $PWD/OBS_P-output.json:/extension-map/OBS_P-output.json -v C:/Users/Ade_3/.dx-platform/projects/OBSP/repository/obs-studio:/sources cryston/extension-map:1.0
    ```
-  [Docker Image](https://hub.docker.com/repository/docker/cryston/extension-map)
+ [Docker Image](https://hub.docker.com/repository/docker/cryston/extension-map)
 
+***
  
 ## Usage
 
